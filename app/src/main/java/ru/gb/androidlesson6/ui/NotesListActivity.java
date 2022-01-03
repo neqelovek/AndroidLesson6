@@ -4,15 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import ru.gb.androidlesson6.R;
+import ru.gb.androidlesson6.data.Constants;
 import ru.gb.androidlesson6.data.InMemoryRepoImpl;
 import ru.gb.androidlesson6.data.Note;
 import ru.gb.androidlesson6.data.Repo;
 import ru.gb.androidlesson6.recycler.NotesAdapter;
 
-public class NotesListActivity extends AppCompatActivity {
+public class NotesListActivity extends AppCompatActivity implements NotesAdapter.OnNoteClickListener {
 
     private Repo repository = new InMemoryRepoImpl();
     private RecyclerView list;
@@ -28,6 +30,8 @@ public class NotesListActivity extends AppCompatActivity {
 
         adapter = new NotesAdapter();
         adapter.setNotes(repository.getAll());
+
+        adapter.setOnNoteClickListener(this);
 
         list = findViewById(R.id.list);
         list.setLayoutManager(new LinearLayoutManager(this));
@@ -48,5 +52,12 @@ public class NotesListActivity extends AppCompatActivity {
         repository.create(new Note("Title 11", "description 11"));
         repository.create(new Note("Title 12", "description 12"));
 
+    }
+
+    @Override
+    public void onNoteClick(Note note) {
+        Intent intent = new Intent(this, EditNoteActivity.class);
+        intent.putExtra(Constants.NOTE,note);
+        startActivity(intent);
     }
 }
