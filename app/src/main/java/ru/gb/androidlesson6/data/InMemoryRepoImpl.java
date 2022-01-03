@@ -1,6 +1,7 @@
 package ru.gb.androidlesson6.data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InMemoryRepoImpl implements Repo {
 
@@ -42,5 +43,10 @@ public class InMemoryRepoImpl implements Repo {
                 break;
             }
         }
+    }
+
+    @Override
+    public List<Note> getAll() {
+        return notes;
     }
 }
