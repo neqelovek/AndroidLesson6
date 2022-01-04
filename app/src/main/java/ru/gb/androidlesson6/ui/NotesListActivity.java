@@ -73,12 +73,12 @@ public class NotesListActivity extends AppCompatActivity implements NotesAdapter
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-       switch (item.getItemId()){
-           case R.id.menu_create:
-               Intent intent = new Intent(this, EditNoteActivity.class);
-               intent.putExtra(Constants.NOTE_NEW, String.valueOf(item));
-               startActivity(intent);
-
+        if (item.getItemId() == R.id.menu_create) {
+            Intent intent = new Intent(this, EditNoteActivity.class);
+            int id = repository.getAll().size() + 1;
+            Note note = new Note(id, "", "");
+            intent.putExtra(Constants.NOTE_NEW, note);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
