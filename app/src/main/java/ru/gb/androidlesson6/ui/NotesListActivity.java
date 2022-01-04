@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -72,11 +73,11 @@ public class NotesListActivity extends AppCompatActivity implements NotesAdapter
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menu_create) {
-            Intent intent = new Intent(this, EditNoteActivity.class);
-            intent.putExtra(Constants.NOTE, item.getItemId());
-            startActivity(intent);
-
+       switch (item.getItemId()){
+           case R.id.menu_create:
+               Intent intent = new Intent(this, EditNoteActivity.class);
+               intent.putExtra(Constants.NOTE_NEW, String.valueOf(item));
+               startActivity(intent);
 
             return true;
         }
