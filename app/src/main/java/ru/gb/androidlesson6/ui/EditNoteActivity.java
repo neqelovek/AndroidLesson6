@@ -52,9 +52,8 @@ public class EditNoteActivity extends AppCompatActivity {
                 } else {
                     repository.update(note1);
                 }
-                intent1.putExtra(Constants.NOTE, note1);
-                startActivity(intent1);
-                onRestart();
+                intent1.putExtra(Constants.NOTE_NEW, note1);
+                onBackPressed();
                 finish();
 
             });
