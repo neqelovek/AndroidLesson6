@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/edit_note_title"
         tools:text="Title"
+        android:hint="@string/title_notes"
         android:textSize="24sp"/>
 
 
@@ -19,6 +20,7 @@
         tools:text="Description"
         android:lines="5"
         android:id="@+id/edit_note_description"
+        android:hint="@string/text_notes"
         android:textSize="20sp"/>
 
     <Button
