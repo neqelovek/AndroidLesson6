@@ -7,16 +7,22 @@ public class InMemoryRepoImpl implements Repo {
 
     private static InMemoryRepoImpl repo;
 
-    public static Repo getInstance() {
-        if(repo == null){
+    private InMemoryRepoImpl() {
+
+        create(new Note("Заметка 1", "Текст заметки 1"));
+        create(new Note("Заметка 2", "Текст заметки 2"));
+        create(new Note("Заметка 3", "Текст заметки 3"));
+        create(new Note("Заметка 4", "Текст заметки 4"));
+        create(new Note("Заметка 5", "Текст заметки 5"));
+        create(new Note("Заметка 6", "Текст заметки 6"));
+
+    }
+
+    public static InMemoryRepoImpl getInstance() {
+        if (repo == null) {
             repo = new InMemoryRepoImpl();
         }
         return repo;
-    }
-
-
-    private InMemoryRepoImpl(){
-
     }
 
 
@@ -58,6 +64,11 @@ public class InMemoryRepoImpl implements Repo {
                 break;
             }
         }
+    }
+
+    @Override
+    public void delete(Note note) {
+
     }
 
     @Override

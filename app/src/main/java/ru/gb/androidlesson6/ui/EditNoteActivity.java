@@ -2,7 +2,6 @@ package ru.gb.androidlesson6.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -21,7 +20,6 @@ public class EditNoteActivity extends AppCompatActivity {
     private EditText description;
     private Button saveNote;
     private int id = -1;
-    private Note note;
     private Repo repository = InMemoryRepoImpl.getInstance();
 
     @Override
@@ -44,7 +42,8 @@ public class EditNoteActivity extends AppCompatActivity {
                 String updateTitle = title.getText().toString();
                 String updateDescription = description.getText().toString();
                 Intent intent1 = new Intent(this, NotesListActivity.class);
-                Note note1 = new Note(id, updateTitle, updateDescription);
+                Note note1 = new Note(id,
+                        updateTitle, updateDescription);
                 note1.setTitle(updateTitle);
                 note1.setDescription(updateDescription);
                 if (note1.getId() == null) {

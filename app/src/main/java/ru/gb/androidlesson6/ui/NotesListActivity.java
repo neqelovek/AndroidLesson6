@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import ru.gb.androidlesson6.R;
 import ru.gb.androidlesson6.data.Constants;
@@ -39,6 +42,7 @@ public class NotesListActivity extends AppCompatActivity implements NotesAdapter
         list.setAdapter(adapter);
     }
 
+
     @Override
     public void onNoteClick(Note note) {
         Intent intent = new Intent(this, EditNoteActivity.class);
@@ -66,6 +70,32 @@ public class NotesListActivity extends AppCompatActivity implements NotesAdapter
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.context, menu);
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+//    @SuppressLint("NonConstantResourceId")
+//    @Override
+//    public boolean onContextItemSelected(@NonNull MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//
+//            case R.id.context_delete:
+//
+//                return true;
+//
+//            case R.id.context_modify:
+//
+//                return true;
+//
+//
+//            default:
+//                return super.onContextItemSelected(item);
+//        }
+//
+//    }
     @Override
     protected void onResume() {
         super.onResume();
